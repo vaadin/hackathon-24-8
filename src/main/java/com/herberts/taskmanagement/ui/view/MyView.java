@@ -11,6 +11,7 @@ import com.vaadin.flow.component.dashboard.DashboardWidget;
 import com.vaadin.flow.component.datepicker.DatePicker;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Anchor;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Main;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.notification.Notification;
@@ -47,15 +48,19 @@ public class MyView extends Main {
 
     public MyView() {
         var dashboard = new Dashboard();
+        dashboard.setEditable(true);
         dashboard.add(createDownloadDashboardWidget());
+        add(dashboard);
     }
 
     private DashboardWidget createDownloadDashboardWidget() {
-        fileNameField = new TextField("File Name");
-        fileContentField = new TextArea("File Content");
+        fileNameField = new TextField();
+        fileContentField = new TextArea();
         var layout = new VerticalLayout(fileNameField, fileContentField, createMenuBarWithDownloadItem());
 
-        return new DashboardWidget(layout);
+        var widget = new DashboardWidget(layout);
+        widget.setHeaderContent(new Div());
+        return widget;
     }
 
     private MenuBar createMenuBarWithDownloadItem() {
@@ -69,14 +74,14 @@ public class MyView extends Main {
 
     private Anchor createDownloadLink() {
         return new Anchor(e -> {
-            e.setFileName("myfile.txt");
+            e.setFileName(fileNameField.getValue() + ".txt");
             e.setContentType("text/plain");
             try {
-                e.getOutputStream().write("AAAAAAAAAAAAAAAAAAAAAAAAA".getBytes(StandardCharsets.UTF_8));
+                e.getOutputStream().write(fileContentField.getValue().getBytes(StandardCharsets.UTF_8));
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            e.getUI().access(() -> Notification.show("\"%s\" downloaded".formatted("myfile.txt")));
+            e.getUI().access(() -> Notification.show("\"%s\" Download completed".formatted(fileContentField.getValue() + ".txt")));
         }, "Download here");
     }
 }

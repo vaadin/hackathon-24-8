@@ -5,7 +5,8 @@ Feedback:
 * Download handler
   * API versatility seems nice. 
   * When clicking Download link, the UI seems to lose connection and reconnects with an "Online" in the loader. Happens on firefox, but seems to work smoothly on chrome. Reported: https://github.com/vaadin/flow-components/issues/7549
-  * 
+* Dashboard
+  * Widget should have reclaimable header space https://github.com/vaadin/flow-components/issues/7551 
 
 
 
