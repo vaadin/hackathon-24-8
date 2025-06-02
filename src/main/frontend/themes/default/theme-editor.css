@@ -1,0 +1,21 @@
+/*
+ * This file has been created by the Vaadin Theme Editor. Please note that
+ * manual changes to individual CSS properties may be overwritten by the theme editor.
+ */
+
+vaadin-button {
+  margin: 0;
+  border-radius: 0;
+  border: 1px solid lightgray;
+}
+vaadin-button.selected {
+  border-color: turquoise;
+}
+vaadin-button.error {
+  color:red;
+  border-color:red;
+}
+vaadin-button.success {
+  color: green;
+  border-color:lightgreen;
+}

@@ -1,3 +1,4 @@
+import {i18n, key, translate} from '@vaadin/hilla-react-i18n';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import {
   AppLayout,
@@ -13,13 +14,13 @@ import {
 } from '@vaadin/react-components';
 import { Suspense } from 'react';
 import { createMenuItems } from '@vaadin/hilla-file-router/runtime.js';
-
+i18n.configure();
 function Header() {
   // TODO Replace with real application logo and name
   return (
     <div className="flex p-m gap-m items-center" slot="drawer">
       <Icon icon="vaadin:cubes" className="text-primary icon-l" />
-      <span className="font-semibold text-l">Reindeer Data Pipeline</span>
+      <span className="font-semibold text-l">{translate(key`span.element-0.text-content`)}</span>
     </div>
   );
 }
@@ -68,15 +69,8 @@ function UserMenu() {
 
 export default function MainLayout() {
   return (
-    <AppLayout primarySection="drawer">
-      <Header />
-      <Scroller slot="drawer">
-        <MainMenu />
-      </Scroller>
-      <UserMenu />
       <Suspense fallback={<ProgressBar indeterminate={true} className="m-0" />}>
         <Outlet />
       </Suspense>
-    </AppLayout>
   );
 }
