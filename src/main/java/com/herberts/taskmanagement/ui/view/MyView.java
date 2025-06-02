@@ -19,10 +19,12 @@ import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.streams.DownloadHandler;
+import com.vaadin.flow.server.streams.UploadHandler;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import jakarta.annotation.security.PermitAll;
 
@@ -44,12 +46,12 @@ public class MyView extends Main {
 
     private TextField fileNameField;
     private TextArea fileContentField;
+    private final Div uploadContent = new Div();
 
 
     public MyView() {
         var dashboard = new Dashboard();
-        dashboard.setEditable(true);
-        dashboard.add(createDownloadDashboardWidget());
+        dashboard.add(createDownloadDashboardWidget(), createUploadDashboardWidget());
         add(dashboard);
     }
 
@@ -58,9 +60,13 @@ public class MyView extends Main {
         fileContentField = new TextArea();
         var layout = new VerticalLayout(fileNameField, fileContentField, createMenuBarWithDownloadItem());
 
-        var widget = new DashboardWidget(layout);
-        widget.setHeaderContent(new Div());
-        return widget;
+        return new DashboardWidget("Download", layout);
+    }
+
+    private DashboardWidget createUploadDashboardWidget() {
+        var upload = new Upload(UploadHandler.inMemory((uploadMetadata, bytes) -> uploadContent.setText(new String(bytes, StandardCharsets.UTF_8))));
+        var layout = new VerticalLayout(uploadContent, upload);
+        return new DashboardWidget("Upload", layout);
     }
 
     private MenuBar createMenuBarWithDownloadItem() {

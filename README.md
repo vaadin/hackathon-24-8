@@ -2,9 +2,11 @@
 
 Feedback:
 * I like the popup notifying that java changes were hot deployed. 
-* Download handler
+* DownloadHandler
   * API versatility seems nice. 
   * When clicking Download link, the UI seems to lose connection and reconnects with an "Online" in the loader. Happens on firefox, but seems to work smoothly on chrome. Reported: https://github.com/vaadin/flow-components/issues/7549
+* UploadHandler 
+  * Seems to work nicely, at least the in-memory one.
 * Dashboard
   * Widget should have reclaimable header space https://github.com/vaadin/flow-components/issues/7551 
 
