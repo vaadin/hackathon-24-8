@@ -9,6 +9,8 @@ Feedback:
   * Seems to work nicely, at least the in-memory one.
 * Dashboard
   * Widget should have reclaimable header space https://github.com/vaadin/flow-components/issues/7551 
+* Card
+  * Tested just a little bit, seems to be working fine. 
 
 
 

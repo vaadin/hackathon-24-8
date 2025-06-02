@@ -5,6 +5,7 @@ import com.herberts.taskmanagement.domain.Task;
 import com.herberts.taskmanagement.service.TaskService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.card.Card;
 import com.vaadin.flow.component.contextmenu.MenuItem;
 import com.vaadin.flow.component.dashboard.Dashboard;
 import com.vaadin.flow.component.dashboard.DashboardWidget;
@@ -13,6 +14,7 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Main;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.menubar.MenuBar;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
@@ -25,6 +27,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.streams.DownloadHandler;
 import com.vaadin.flow.server.streams.UploadHandler;
+import com.vaadin.flow.theme.lumo.LumoIcon;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 import jakarta.annotation.security.PermitAll;
 
@@ -51,7 +54,7 @@ public class MyView extends Main {
 
     public MyView() {
         var dashboard = new Dashboard();
-        dashboard.add(createDownloadDashboardWidget(), createUploadDashboardWidget());
+        dashboard.add(createDownloadDashboardWidget(), createUploadDashboardWidget(), createCardWidget());
         add(dashboard);
     }
 
@@ -67,6 +70,22 @@ public class MyView extends Main {
         var upload = new Upload(UploadHandler.inMemory((uploadMetadata, bytes) -> uploadContent.setText(new String(bytes, StandardCharsets.UTF_8))));
         var layout = new VerticalLayout(uploadContent, upload);
         return new DashboardWidget("Upload", layout);
+    }
+
+    private DashboardWidget createCardWidget() {
+        var card1 = new Card();
+        Icon icon1 = LumoIcon.PHOTO.create();
+        card1.setMedia(icon1);
+        card1.add("Lapland is the northern-most region of Finland and an active outdoor destination.");
+
+        var card2 = new Card();
+        Icon icon2 = LumoIcon.ALIGN_LEFT.create();
+        card2.setMedia(icon2);
+        card2.setTitle("Align left");
+        card2.add("Lapland is the northern-most region of Finland and an active outdoor destination.");
+
+        var layout = new VerticalLayout(card1, card2);
+        return new DashboardWidget("Card", layout);
     }
 
     private MenuBar createMenuBarWithDownloadItem() {
