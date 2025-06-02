@@ -1,23 +1,14 @@
-# Reindeer Data Pipeline README
+# Sudoku
 
-- [ ] TODO Replace or update this README with instructions relevant to your application
+Sudoku game implementation using Flow Signals. 
 
-To start the application in development mode, import it into your IDE and run the `Application` class. 
-You can also start the application from the command line by running: 
+### Feedbacks about signals:
+ - There is an increment API for NumberSignals but no built-in decrement API
+ - You might run into ConcurrentModificationException quite often when using MapSignal
+ - Signal.runEffect() runs everytime when any state value changes. It would be nice feature to let users pick the value that runEffect runs, same as reaction in Mobx
+ - There is no way to reset all signals at once, you need to do it manually. Would be nice to have a clear method.
+ - https://github.com/vaadin/flow/issues/21582 - Signals do not work after Hotswap if an effect is introduced
+ - BooleanSignal is missing 
+ - There should be a way to trigger Signal run Effect without changing the value, similar to requestUpdate() in Lit
 
-```bash
-./mvnw
-```
-
-To build the application in production mode, run:
-
-```bash
-./mvnw -Pproduction package
-```
-
-## Getting Started
-
-The [Getting Started](https://vaadin.com/docs/latest/getting-started) guide will quickly familiarize you with your new
-Reindeer Data Pipeline implementation. You'll learn how to set up your development environment, understand the project 
-structure, and find resources to help you add muscles to your skeleton — transforming it into a fully-featured 
-application.
+An idea from redux or React dev tools is that there can be a state visualizer in Copilot where users can see the Signal value real time, without debugging.
