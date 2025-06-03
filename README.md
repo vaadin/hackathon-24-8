@@ -1,11 +1,23 @@
-# hackathon-24-8
-Hackathon Rules
-1. Versions: Use Platform 24.8.0.beta2 (or the latest version)
-2. Choose your project: You can work on an app, fixes, migrations, new features, docs, addons, DS, or just reporting issues.
-3. Deadline: Upload your work to the GitHub Repository by Monday
-4. Contribution options: If you don’t have any code to show, please add a README or screenshots demoing your work.
-5. Communication: Use Slack channel #hackathon-24-8 for discussions.
-6. Documentation: Refer to vaadin.com/docs/latest for help and information.
+# Issues found in copilot:
+
+[copilot/#89](https://github.com/vaadin/copilot/issues/89)
+Inconsistent camelization when generating class and file names causes compilation error
+
+[copilot/#88](https://github.com/vaadin/copilot/issues/88)
+Large Copilot panel content overflows viewport and action buttons become inaccessible
+
+[copilot/#87](https://github.com/vaadin/copilot/issues/87)
+Inprove DX when adding a new views
+
+[copilot/#86](https://github.com/vaadin/copilot/issues/86)
+Side panels open by default with empty content, causing confusion and excessive whitespace
+
+[copilot/#85](https://github.com/vaadin/copilot/issues/85)
+Copilot error when running a new project with Vaadin 24.8.0.beta2 · NoSuchMethodError with H2ConsoleProperties
+
+[copilot/#84](https://github.com/vaadin/copilot/issues/84)
+Copilot panels overlap with Dev Mode notification causing usability issues
+
 
 
 
